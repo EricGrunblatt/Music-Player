@@ -5,15 +5,15 @@ export default function Library() {
   let genres = []  
   const loadGenres = async () => {
     const token = await api.getToken();
-    const genres = await api.getGenres(token);
-    console.log(genres);
+    const playlists = await api.getMyPlaylists(token);
+    console.log(playlists);
 
   }
 
   return (
     <>
       <div className="library">
-        <button onClick={() => { loadGenres() }}>Load Genres</button>
+        <button onClick={() => { loadGenres() }}>Load My Playlists</button>
       </div>
     </>
   )

@@ -56,12 +56,23 @@ const getTrack = async (token, trackEndPoint) => {
     return data;
 }
 
+const getMyPlaylists = async(token) => {
+    const result = await fetch('https://api.spotify.com/v1/me/playlists', {
+        method: 'GET',
+        headers: {'Authorization': 'Bearer ' + token}
+    })
+
+    const data = await result.json();
+    return data;
+}
+
 const apis = {
     getToken,
     getGenres,
     getPlaylistByGenre,
     getTracks,
-    getTrack
+    getTrack,
+    getMyPlaylists
 }
 
 export default apis;
