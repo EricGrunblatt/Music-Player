@@ -2,7 +2,8 @@ import { HomeTwoTone, EditTwoTone, CheckCircleTwoTone } from '@ant-design/icons'
 import { Menu } from 'antd';
 import { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
 
 const Header = () => {
   const [current, setCurrent] = useState('h');

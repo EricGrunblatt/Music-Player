@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import ericProfilePic from '/EricCover.jpg'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 export default function Homepage() {
   const navigate = useNavigate();
-  const [goToLibrary, setGoToLibrary] = useState(false);
-
-  useEffect(() => {
-    if(!goToLibrary) return;
-    navigate("/library");
-  })
 
   return (
     <div className="homepage">
@@ -18,11 +12,14 @@ export default function Homepage() {
       </div>
       <h1>Eric's Music Dashboard</h1>
       <div className="button-options">
-        <button onClick={() => { setGoToLibrary(true)}} style={{border: '2px solid black', borderRadius: '10px', width: '200px', margin: '0 25px 0 0'}}>
+        <button onClick={() => { navigate("/library")}} style={{border: '2px solid black', borderRadius: '10px', width: '200px', margin: '0 25px 0 0'}}>
           Go To Library
         </button>
-        <button style={{border: '2px solid black', borderRadius: '10px', width: '200px'}}>
+        <button style={{border: '2px solid black', borderRadius: '10px', width: '200px', margin: '0 25px 0 0'}}>
           Go To Personal Music
+        </button>
+        <button onClick={() => {navigate("/search")}} style={{border: '2px solid black', borderRadius: '10px', width: '200px'}}>
+          Search
         </button>
       </div>
     </div>
