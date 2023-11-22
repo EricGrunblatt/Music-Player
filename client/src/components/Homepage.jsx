@@ -5,6 +5,9 @@ import { useNavigate, Link } from 'react-router-dom'
 export default function Homepage() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+  })
+
   return (
     <div className="homepage">
       <div>

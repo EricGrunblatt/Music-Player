@@ -36,7 +36,7 @@ export default function Search() {
   }
 
   return (
-    <>
+    <>                            
       <div className="search">
         <Container>
             <InputGroup className="mb-3" size="lg">
@@ -44,9 +44,7 @@ export default function Search() {
                     placeholder="Search For Artist"
                     type="input"
                     onKeyDown={event => {
-                        if(event.key == "Enter") {
-                            search();
-                        }
+                        if(event.key == "Enter") search();
                     }}
                     onChange={event => setSearchInput(event.target.value)}
                 />

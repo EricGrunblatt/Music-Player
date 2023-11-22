@@ -1,4 +1,5 @@
 const getToken = async () => {
+    authorize();
     const clientId = '218ecbfb3ecd4d5197a3fef7373cec22';
     const clientSecret = '0780e3f07e0746b39a293a5d5825b4f8';
     const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -77,8 +78,8 @@ const getTrack = async (token, trackEndPoint) => {
     return data;
 }
 
-const getMyPlaylists = async(token) => {
-    const result = await fetch('https://api.spotify.com/v1/me/playlists', {
+const getMyTopArtists = async (token) => {
+    const result = await fetch('https://api.spotify.com/v1/me/', {
         method: 'GET',
         headers: {'Authorization': 'Bearer ' + token}
     })
@@ -95,7 +96,7 @@ const apis = {
     getPlaylistByGenre,
     getTracks,
     getTrack,
-    getMyPlaylists
+    getMyTopArtists
 }
 
 export default apis;

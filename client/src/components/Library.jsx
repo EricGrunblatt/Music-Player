@@ -1,19 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import api from '../api/index'
 
 export default function Library() {
-  let genres = []  
-  const loadGenres = async () => {
-    const token = await api.getToken();
-    const playlists = await api.getMyPlaylists(token);
-    console.log(playlists);
+  const [accessToken, setAccessToken] = useState("");
+
+  useEffect(() => {
+    const getToken = async () => {
+      const token = await api.getToken();
+      setAccessToken(token);
+    }
+    getToken();
+  })
+ 
+  async function myArtists() {
+    const artists = await api.getMyTopArtists(accessToken);
+    console.log(artists);
 
   }
 
   return (
     <>
       <div className="library">
-        <button onClick={() => { loadGenres() }}>Load My Playlists</button>
+        <button onClick={() => { myArtists() }}>Load My Artists</button>
       </div>
     </>
   )

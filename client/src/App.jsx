@@ -5,11 +5,13 @@ import Header from './components/Header'
 import Homepage from './components/Homepage'
 import Library from './components/Library'
 import Search from './components/Search'
+import Authorize from './components/Authorize'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Header />}>
-      <Route index element={<Homepage />} />
+      <Route index element={<Authorize />} />
+      <Route path="/homepage" element={<Homepage />} />
       <Route path="/library" element={<Library />} />
       <Route path="/search" element={<Search />} />
     </Route>
