@@ -78,14 +78,30 @@ const getTrack = async (token, trackEndPoint) => {
     return data;
 }
 
-const getMyTopArtists = async (token) => {
-    const result = await fetch('https://api.spotify.com/v1/me/', {
+const getMyPlaylists = async (token) => {
+    const result = await fetch('https://api.spotify.com/v1/me/playlists', {
         method: 'GET',
-        headers: {'Authorization': 'Bearer ' + token}
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }
     })
 
     const data = await result.json();
-    return data;
+    return data.items;
+}
+
+const getMyPlaylistTracks = async (token, playlistId) => {
+    const result = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }
+    })
+
+    const data = await result.json();
+    return data.items;
 }
 
 const apis = {
@@ -96,7 +112,8 @@ const apis = {
     getPlaylistByGenre,
     getTracks,
     getTrack,
-    getMyTopArtists
+    getMyPlaylists,
+    getMyPlaylistTracks
 }
 
 export default apis;

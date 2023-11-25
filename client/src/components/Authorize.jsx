@@ -17,7 +17,6 @@ export default function Authorize() {
     useEffect(() => {
         const fetchAccessToken = async () => {
             let token = await getAccessToken();
-            (console.log('token: ' + token))
             if(token) {
                 navigate("homepage");
                 localStorage.setItem('access_token', token.access_token);
