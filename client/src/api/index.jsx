@@ -104,6 +104,20 @@ const getMyPlaylistTracks = async (token, playlistId) => {
     return data.items;
 }
 
+const getMyId = async (token) => {
+    const result = await fetch('https://api.spotify.com/v1/me', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }
+    })
+
+    const data = await result.json();
+    return data
+}
+
+
 const apis = {
     getToken,
     getArtistId,
@@ -113,7 +127,8 @@ const apis = {
     getTracks,
     getTrack,
     getMyPlaylists,
-    getMyPlaylistTracks
+    getMyPlaylistTracks,
+    getMyId,
 }
 
 export default apis;
