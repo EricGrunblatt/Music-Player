@@ -114,7 +114,7 @@ export default function Authorize() {
                         }}
                         onChange={event => setSecret(event.target.value)}
                     />
-                    <Button onClick={event => { authorize() }}>
+                    <Button onClick={event => { authorize() }} style={{ height: 'auto' }} >
                         Authorize
                     </Button>
                 </InputGroup>

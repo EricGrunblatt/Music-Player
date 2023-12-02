@@ -98,7 +98,7 @@ const getMyPlaylistTracks = async (token, playlistId) => {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token,
         }
-    })
+    });
 
     const data = await result.json();
     return data.items;
@@ -117,6 +117,60 @@ const getMyId = async (token) => {
     return data
 }
 
+const playSong = async (token, body, device_id) => {
+    const result = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${device_id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }, 
+        data: body,
+    });
+}
+
+const pauseSong = async (token) => {
+    const result = await fetch('https://api.spotify.com/v1/me/player/pause', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }
+    });
+}
+
+const getDevices = async (token) => {
+    const result = await fetch('https://api.spotify.com/v1/me/player/devices', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }
+    });
+
+    const data = await result.json();
+    return data.devices;
+}
+
+const startNextSong = async (token) => {
+    const result = await fetch('https://api.spotify.com/v1/me/player/next', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }
+    });
+}
+
+const startPrevSong = async (token) => {
+    const result = await fetch('https://api.spotify.com/v1/me/player/previous', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }
+    });
+}
+
 
 const apis = {
     getToken,
@@ -129,6 +183,11 @@ const apis = {
     getMyPlaylists,
     getMyPlaylistTracks,
     getMyId,
+    playSong,
+    pauseSong,
+    getDevices,
+    startNextSong,
+    startPrevSong
 }
 
 export default apis;
