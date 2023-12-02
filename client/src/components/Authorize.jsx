@@ -11,9 +11,6 @@ export default function Authorize() {
     const TOKEN = 'https://accounts.spotify.com/api/token'
     let clientId = '', clientSecret = ''
 
-    // ClientId: '218ecbfb3ecd4d5197a3fef7373cec22'
-    // ClientSecret: '0780e3f07e0746b39a293a5d5825b4f8'
-
     useEffect(() => {
         const fetchAccessToken = async () => {
             let token = await getAccessToken();
